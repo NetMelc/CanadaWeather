@@ -10,7 +10,7 @@ def get_url(station_id, year):
     return f'https://climate.weather.gc.ca/climate_data/bulk_data_e.html?format=csv&stationID={station_id}&Year={year}&Month=8&Day=14&timeframe=2&submit=Download+Data'
 
 def get_filename(station_id, year):
-    return f'C:/Users/NR200P Max/Documents/Python Code/Weather/StationData/{station_id}/{station_id}_{year}.csv'
+    return f'StationData/{station_id}/{station_id}_{year}.csv'
 
 def is_data_fetched(station_id, year):
     return os.path.isfile(get_filename(station_id, year))
@@ -21,7 +21,7 @@ def get_weather_data_per_year(args):
     url = get_url(station_id, year)
     out_path = get_filename(station_id, year)
 
-    os.makedirs(f'C:/Users/NR200P Max/Documents/Python Code/Weather/StationData/{station_id}', exist_ok=True)
+    os.makedirs(f'StationData/{station_id}', exist_ok=True)
 
     file = requests.get(url)
     with open(out_path, 'wb') as f:
